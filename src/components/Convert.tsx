@@ -29,7 +29,7 @@ const Convert: React.FC = () => {
       // Everything after the cursor
       inputValue.slice(currentInput.selectionEnd || 0)
     );
-    setCursorPosition(currentInput.selectionStart + 1);
+    setCursorPosition((currentInput.selectionStart || 0) + 1);
     currentInput.focus();
   };
   // Add diacritics to input value
