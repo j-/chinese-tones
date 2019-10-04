@@ -37,6 +37,7 @@ const Convert: React.FC = () => {
   // Set the input ref cursor position
   React.useEffect(() => {
     const currentInput = inputRef.current;
+    if (!currentInput) return;
     currentInput.selectionStart = cursorPosition;
     currentInput.selectionEnd = cursorPosition;
   }, [cursorPosition]);
