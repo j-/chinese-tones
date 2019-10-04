@@ -6,7 +6,7 @@ export const DEFAULT_VALUE = 'wo3 de ma1ma1';
 
 const Convert: React.FC = () => {
   // Refs
-  const inputRef = React.useRef<HTMLInputElement>();
+  const inputRef = React.useRef<HTMLInputElement | null>(null);
   // State
   const [inputValue, setInputValue] = React.useState(DEFAULT_VALUE);
   const [cursorPosition, setCursorPosition] = React.useState(DEFAULT_VALUE.length);
