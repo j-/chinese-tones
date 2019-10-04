@@ -16,16 +16,21 @@ const Convert: React.FC = () => {
   };
   const handleClickButton: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
+    const currentInput = inputRef.current;
+    if (!currentInput) {
+      setInputValue(inputValue + e.currentTarget.value);
+      return;
+    }
     setInputValue(
       // Everything before the cursor
-      inputValue.slice(0, inputRef.current.selectionStart || 0) +
+      inputValue.slice(0, currentInput.selectionStart || 0) +
       // The number corresponding to the clicked button
       e.currentTarget.value +
       // Everything after the cursor
-      inputValue.slice(inputRef.current.selectionEnd || 0)
+      inputValue.slice(currentInput.selectionEnd || 0)
     );
-    setCursorPosition(inputRef.current.selectionStart + 1);
-    inputRef.current.focus();
+    setCursorPosition(currentInput.selectionStart + 1);
+    currentInput.focus();
   };
   // Add diacritics to input value
   const output = convert(inputValue);
