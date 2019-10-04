@@ -18,11 +18,11 @@ const Convert: React.FC = () => {
     e.preventDefault();
     setInputValue(
       // Everything before the cursor
-      inputValue.slice(0, inputRef.current.selectionStart) +
+      inputValue.slice(0, inputRef.current.selectionStart || 0) +
       // The number corresponding to the clicked button
       e.currentTarget.value +
       // Everything after the cursor
-      inputValue.slice(inputRef.current.selectionEnd)
+      inputValue.slice(inputRef.current.selectionEnd || 0)
     );
     setCursorPosition(inputRef.current.selectionStart + 1);
     inputRef.current.focus();
