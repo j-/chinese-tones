@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { convert } from '../convert';
+import { convert, getVowelAt } from '../convert';
 import { ToneButton1, ToneButton2, ToneButton3, ToneButton4 } from './ToneButton';
 
 export const DEFAULT_VALUE = 'wo3 de ma1ma1';
@@ -32,6 +32,15 @@ const Convert: React.FC = () => {
     setCursorPosition((currentInput.selectionStart || 0) + 1);
     currentInput.focus();
   };
+  const handleSelect: React.ReactEventHandler<HTMLInputElement> = (e) => {
+    const currentInput = inputRef.current;
+    if (!currentInput) {
+      return;
+    }
+    setCursorPosition(currentInput.selectionStart || 0);
+  };
+  //
+  const currentVowel = getVowelAt(inputValue, cursorPosition - 1);
   // Add diacritics to input value
   const output = convert(inputValue);
   // Set the input ref cursor position
@@ -53,14 +62,15 @@ const Convert: React.FC = () => {
           placeholder="Enter pinyin"
           value={inputValue}
           onChange={handleChangeInput}
+          onSelect={handleSelect}
           autoFocus={true}
         />
       </div>
       <div className="btn-group d-flex mt-3 mb-3" role="group" aria-label="Tone buttons">
-        <ToneButton1 onClick={handleClickButton} />
-        <ToneButton2 onClick={handleClickButton} />
-        <ToneButton3 onClick={handleClickButton} />
-        <ToneButton4 onClick={handleClickButton} />
+        <ToneButton1 currentVowel={currentVowel} onClick={handleClickButton} />
+        <ToneButton2 currentVowel={currentVowel} onClick={handleClickButton} />
+        <ToneButton3 currentVowel={currentVowel} onClick={handleClickButton} />
+        <ToneButton4 currentVowel={currentVowel} onClick={handleClickButton} />
       </div>
       <div className="Convert-output-group card card-body">
         <output className="display-4">
