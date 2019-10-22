@@ -2,12 +2,14 @@ import * as React from 'react';
 
 export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   selectionStart: number;
-  setSelectionStart: React.SetStateAction<number>;
+  setSelectionStart: React.Dispatch<React.SetStateAction<number>>;
   selectionEnd: number;
-  setSelectionEnd: React.SetStateAction<number>;
+  setSelectionEnd: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SelectionInput = React.forwardRef<HTMLInputElement | null, Props>((props, ref) => {
+const SelectionInput = React.forwardRef<HTMLInputElement | null, Props>((props, forwardedRef) => {
+  const ref = forwardedRef as React.MutableRefObject<HTMLInputElement | null>;
+
   const {
     selectionStart,
     setSelectionStart,
@@ -27,6 +29,8 @@ const SelectionInput = React.forwardRef<HTMLInputElement | null, Props>((props, 
   const handleSelect: React.ReactEventHandler<HTMLInputElement> = (e) => {
     const el = ref.current;
     if (!el) return;
+    if (!el.selectionStart) return;
+    if (!el.selectionEnd) return;
     setSelectionStart(el.selectionStart);
     setSelectionEnd(el.selectionEnd);
     if (onSelect) onSelect(e);

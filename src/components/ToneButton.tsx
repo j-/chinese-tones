@@ -4,7 +4,7 @@ import { ACUTE, CARON, GRAVE, MACRON } from '../convert';
 export const DOTTED_CIRCLE = '\u25cc';
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  currentVowel: string | null;
+  currentVowel?: string | null;
 }
 
 const ToneButton: React.FC<Props> = (props) => (
