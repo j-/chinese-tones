@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/chinese-tones/static/js/main.18fe6f3c.chunk.js",
-    "main.js.map": "/chinese-tones/static/js/main.18fe6f3c.chunk.js.map",
-    "runtime-main.js": "/chinese-tones/static/js/runtime-main.427ea694.js",
-    "runtime-main.js.map": "/chinese-tones/static/js/runtime-main.427ea694.js.map",
+    "main.js": "/chinese-tones/static/js/main.5e236998.chunk.js",
+    "main.js.map": "/chinese-tones/static/js/main.5e236998.chunk.js.map",
+    "runtime-main.js": "/chinese-tones/static/js/runtime-main.c856258b.js",
+    "runtime-main.js.map": "/chinese-tones/static/js/runtime-main.c856258b.js.map",
     "static/css/2.545c6387.chunk.css": "/chinese-tones/static/css/2.545c6387.chunk.css",
-    "static/js/2.7438ea16.chunk.js": "/chinese-tones/static/js/2.7438ea16.chunk.js",
-    "static/js/2.7438ea16.chunk.js.map": "/chinese-tones/static/js/2.7438ea16.chunk.js.map",
+    "static/js/2.6739eb4f.chunk.js": "/chinese-tones/static/js/2.6739eb4f.chunk.js",
+    "static/js/2.6739eb4f.chunk.js.map": "/chinese-tones/static/js/2.6739eb4f.chunk.js.map",
     "index.html": "/chinese-tones/index.html",
-    "precache-manifest.4c9736c4c71d33c1a311a1153fed29d7.js": "/chinese-tones/precache-manifest.4c9736c4c71d33c1a311a1153fed29d7.js",
+    "precache-manifest.52fa5e8d251a73ef8b13eb94565302e7.js": "/chinese-tones/precache-manifest.52fa5e8d251a73ef8b13eb94565302e7.js",
     "service-worker.js": "/chinese-tones/service-worker.js",
     "static/css/2.545c6387.chunk.css.map": "/chinese-tones/static/css/2.545c6387.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.427ea694.js",
+    "static/js/runtime-main.c856258b.js",
     "static/css/2.545c6387.chunk.css",
-    "static/js/2.7438ea16.chunk.js",
-    "static/js/main.18fe6f3c.chunk.js"
+    "static/js/2.6739eb4f.chunk.js",
+    "static/js/main.5e236998.chunk.js"
   ]
 }
