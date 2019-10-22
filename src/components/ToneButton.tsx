@@ -36,3 +36,12 @@ export const ToneButton4: React.FC<Props> = ({ currentVowel, ...props }) => (
     <big>{(currentVowel || DOTTED_CIRCLE) + GRAVE}</big><br /><small>4</small>
   </ToneButton>
 );
+
+export const ToneButtons: React.FC<Props> = (props) => (
+  <>
+    <ToneButton1 {...props} />
+    <ToneButton2 {...props} />
+    <ToneButton3 {...props} />
+    <ToneButton4 {...props} />
+  </>
+);
