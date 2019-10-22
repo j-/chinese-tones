@@ -2,7 +2,7 @@ import * as React from 'react';
 import { convert, getVowelAt } from '../convert';
 import { ToneButton1, ToneButton2, ToneButton3, ToneButton4 } from './ToneButton';
 
-export const DEFAULT_VALUE = 'wo3 de ma1ma1';
+export const DEFAULT_VALUE = 'nv ha2i zi';
 
 const Convert: React.FC = () => {
   // Refs
