@@ -9,24 +9,15 @@ export const GRAVE = '\u0300';
 /** E.g. Nü */
 export const UMLAUT = '\u0308';
 
-export const toneToChar = (tone: number) => {
-  switch (tone) {
-    case 1: return MACRON;
-    case 2: return ACUTE;
-    case 3: return CARON;
-    case 4: return GRAVE;
-  }
-  throw new Error('Expected a number from 1 to 4');
-};
-
-export const convert = (input: string) => {
-  const output = input
-    .replace(/([aeiou])([1-4])/ig, (_, vowel, tone) => (
-      vowel + toneToChar(Number(tone))
-    ))
-    .replace(/v/g, 'u' + UMLAUT + CARON);
-  return output;
-};
+export const convert = (input: string) => (
+  input
+    .replace(/([aeiou])1/ig, '$1\u0304')
+    .replace(/([aeiou])2/ig, '$1\u0301')
+    .replace(/([aeiou])3/ig, '$1\u030c')
+    .replace(/([aeiou])4/ig, '$1\u0300')
+    .replace(/v/g, 'u\u0308\u030c')
+    .replace(/V/g, 'U\u0308\u030c')
+);
 
 export const VOWELS = Object.freeze(new Set(['a', 'e', 'i', 'o', 'u']));
 

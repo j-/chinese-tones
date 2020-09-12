@@ -1,68 +1,64 @@
 import * as React from 'react';
-import { convert, getVowelAt } from '../convert';
-import SelectionInput from './SelectionInput';
-import { ToneButtons } from './ToneButton';
+import { getVowelAt } from '../convert';
+import ToneButtons from './ToneButtons';
+import Output from './Output';
 
 export const DEFAULT_VALUE = 'nv ha2i zi';
+export const IS_TOP_LEVEL = window.self === window.top;
 
 const Convert: React.FC = () => {
   // Refs
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
   // State
   const [inputValue, setInputValue] = React.useState(DEFAULT_VALUE);
-  const [selectionStart, setSelectionStart] = React.useState(DEFAULT_VALUE.length);
-  const [selectionEnd, setSelectionEnd] = React.useState(DEFAULT_VALUE.length);
+  const [currentVowel, setCurrentVowel] = React.useState<string | null>(null);
   // Handlers
-  const handleChangeInput: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleChangeInput = React.useCallback<React.ChangeEventHandler<HTMLInputElement>>((e) => {
     setInputValue(e.currentTarget.value);
-  };
-  const handleClickButton: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+  }, []);
+  const handleClickButton = React.useCallback<React.MouseEventHandler<HTMLButtonElement>>((e) => {
     e.preventDefault();
     const currentInput = inputRef.current;
     if (!currentInput) return;
-    setInputValue(
-      // Everything before the cursor
-      inputValue.slice(0, selectionStart || 0) +
-      // The number corresponding to the clicked button
-      e.currentTarget.value +
-      // Everything after the cursor
-      inputValue.slice(selectionEnd || 0)
-    );
-    const cursorPosition = (selectionStart || 0) + 1;
-    setSelectionStart(cursorPosition);
-    setSelectionEnd(cursorPosition);
     currentInput.focus();
-  };
-  // Change the tone buttons to match the vowel at the cursor position
-  const currentVowel = getVowelAt(inputValue, selectionStart - 1);
-  // Add diacritics to input value
-  const output = convert(inputValue);
+    document.execCommand('insertText', false, e.currentTarget.value);
+  }, []);
+  const handleSelectInput = React.useCallback<React.ReactEventHandler<HTMLInputElement>>((e) => {
+    const currentInput = inputRef.current;
+    if (!currentInput) return;
+    setCurrentVowel(
+      getVowelAt(
+        currentInput.value,
+        currentInput.selectionStart === null ?
+          currentInput.value.length :
+          currentInput.selectionStart - 1
+      )
+    );
+  }, []);
   return (
     <div className="Convert">
-      <div className="Convert-input-group form-group">
+      <div className="form-group my-4">
         <label htmlFor="Convert-input" className="sr-only">Pinyin</label><br />
-        <SelectionInput
+        <input
           ref={inputRef}
           id="Convert-input"
-          className="form-control"
+          className="form-control form-control-lg"
           type="text"
           placeholder="Enter pinyin"
           value={inputValue}
           onChange={handleChangeInput}
-          autoFocus={true}
-          selectionStart={selectionStart}
-          setSelectionStart={setSelectionStart}
-          selectionEnd={selectionEnd}
-          setSelectionEnd={setSelectionEnd}
+          onSelect={handleSelectInput}
+          autoFocus={IS_TOP_LEVEL}
         />
       </div>
-      <div className="btn-group d-flex mt-3 mb-3" role="group" aria-label="Tone buttons">
-        <ToneButtons currentVowel={currentVowel} onClick={handleClickButton} />
+      <div className="my-4">
+        <ToneButtons
+          onClickButton={handleClickButton}
+          currentVowel={currentVowel}
+        />
       </div>
-      <div className="Convert-output-group card card-body">
-        <output className="display-4">
-          {output || <>&zwj;</>}
-        </output>
+      <div className="my-4">
+        <Output value={inputValue} />
       </div>
     </div>
   );
