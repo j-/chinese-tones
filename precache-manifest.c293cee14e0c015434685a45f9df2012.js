@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d957e812cbf857040d2d37d5cfd990f4",
+    "revision": "02663388ca0199d911af5f89aa6c1d77",
     "url": "/chinese-tones/index.html"
   },
   {
