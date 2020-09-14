@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "02663388ca0199d911af5f89aa6c1d77",
+    "revision": "2ee878fe6681741674ee42e8e559033b",
     "url": "/chinese-tones/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/chinese-tones/static/css/2.545c6387.chunk.css"
   },
   {
-    "revision": "38d1faeb435cd87da668",
+    "revision": "3e7f823f492cc0c237f2",
     "url": "/chinese-tones/static/css/main.20c1d9d3.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/chinese-tones/static/js/2.989dd929.chunk.js"
   },
   {
-    "revision": "38d1faeb435cd87da668",
-    "url": "/chinese-tones/static/js/main.0e55e5ba.chunk.js"
+    "revision": "3e7f823f492cc0c237f2",
+    "url": "/chinese-tones/static/js/main.f1210afb.chunk.js"
   },
   {
     "revision": "e2b4fad41ce3aa80dd3e",
